@@ -1,0 +1,102 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+# 10位學生的主系
+majors10_char <- c('經濟學系','社會學系','社會學系','經濟學系','經濟學系','社會學系','經濟學系','經濟學系','經濟學系','社會學系')
+
+typeof(majors10_char)
+class(majors10_char)
+```
+
+```{r}
+我的年紀<-20
+my_age<-我的年紀
+vNum1<-c(-1,5)
+vNum2<-c(2,3)
+vNum3<-c(vNum1,vNum2)
+class(vNum3)
+```
+
+```{r}
+logi1 <- c(T,TRUE,F,FALSE,FALSE)
+sum(logi1)
+num <- c(1.5, 2, 3)
+int <- c(1L, 3L, -2L)
+char <- c("1.5","2","3")
+logi <- c(T,T,F)
+
+typeof(num)
+typeof(int)
+typeof(char)
+typeof(logi)
+```
+
+```{r}
+myString <- "Hello, World!"
+print ( myString)
+
+```
+
+```{r}
+library(lubridate) #為了讓電腦讀得懂時間表示
+list(
+  ymd_hms("2020-03-31T13:40:55Z"), #Date/Time
+  "一芳", #Character
+  2, #Numeric
+  "水果茶" #Character
+)
+```
+
+
+list有三種表達的方式
+1:list含兩個vectors
+2:list含兩個lists
+3:list含兩個lists,子層list又各含兩個vectors
+```{r}
+# list含兩個lists
+`小明108學年課表`<-list(
+  list('108學年第1學期','高級會計學','高等統計學'),
+  list('108學年第2學期','食在拉丁美洲')
+)
+print(`小明108學年課表`)
+```
+
+
+```{r}
+#幫物件取名字
+`小明108學年課表C` <- list(
+  `第一學期`=list(
+    c("108-1"), 
+    c("高級會計學","高等統計學")
+       ),
+  `第二學期`=list(
+    c("108-2"),
+    c("食在拉丁美洲")
+  )
+)
+print(`小明108學年課表C`)
+
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+summary(cars)
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
