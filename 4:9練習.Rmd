@@ -121,6 +121,99 @@ course3<-
   )
 ```
 
+
+```{r}
+vectorExample<-c('a','b','c')
+
+length(vectorExample)
+```
+```{r}
+listExample <- 
+  list(
+    student="小明",
+    `學期`=list(
+      `108-1`=list(
+        list(
+          name="個體經濟學",
+          teacher="Alice",
+          grade=85
+        )
+      ),
+      `108-2`=list(
+        list(
+          name="總體經濟學",
+          teacher="Mark",
+          grade=78
+        )
+      )
+    )
+  )
+# 有多少位置可選：
+length(listExample)
+# 各個位置叫什麼：
+names(listExample)
+
+```
+
+```{r}
+library(jsonlite)
+fromJSON("https://data.tainan.gov.tw/dataset/4cd9345a-04bf-4328-a97d-314ff78b4763/resource/afc025fc-1ef4-447c-b785-a680391d0ca1/download/tnsport2.json", simplifyDataFrame = F) -> tainanSportsMap
+
+# 有多少位置可選：
+length(tainanSportsMap)
+```
+
+
+都是一樣的表達法
+```{r}
+str(listExample[[1]])
+str(listExample$student)
+str(listExample[["student"]])
+```
+
+```{r}
+vectorExample
+vectorExample[c(1,3)]
+vectorExample[c(3,2,1)] # 產生重新排列效果
+```
+```{r}
+# 顯示到第一層
+str(listExample, max.level=1)
+
+listExample[c(1,2)]
+```
+
+```{r}
+fromJSON("https://www.dropbox.com/s/qnm9bnz7vccrvcz/taipeiNightMarkets.json?dl=1", simplifyDataFrame = F) -> taipeiNightMarkets
+```
+
+```{r}
+vectorExample[c(T,T,F)] #要、要、不要
+```
+```{r}
+names(taipeiNightMarkets)
+```
+```{r}
+str(taipeiNightMarkets[c(T,F,F,F,T,F,F,F,F,T,F,F,F,T)],max.level = 1)
+# 用max.level是為了只顯示出夜市名稱
+```
+老師比較漂亮的打法
+```{r}
+selectedMarket <- c(T,F,F,F,T,F,F,F,F,T,F,F,F,T)
+
+str(taipeiNightMarkets[selectedMarket],max.level = 1)
+```
+比較使用一個中括號與兩個中括號的差異
+```{r}
+str(listExample,max.level = 3)
+get1 <- listExample[["學期"]] #老師推薦
+get2 <- listExample["學期"]
+
+# [[]]：取出一個物件值
+# []：留下某一個物件值
+```
+
+
 ## R Markdown
 
 This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
