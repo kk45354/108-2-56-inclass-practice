@@ -213,6 +213,24 @@ get2 <- listExample["學期"]
 # []：留下某一個物件值
 ```
 
+～～～～～～～～～～期末考範圍～～～～～～～～～～～
+```{r}
+source("https://www.dropbox.com/s/qsrw069n94k61lj/transcript100to103_list.R?dl=1")
+```
+
+若要比大小幣續確認雙方皆在同一個class
+table  只要是可以分類去數的，就能夠根據該種類去製做成表格
+
+```{r}
+# 各學屆2年級人數
+table(transcript100to103$學屆)
+# 成績大魚85的
+pick_above85 <- transcript100to103$成績 > 85 
+# 各學屆2年級成績大於85年數
+table(transcript100to103$學屆[pick_above85])
+```
+
+
 
 ## R Markdown
 
