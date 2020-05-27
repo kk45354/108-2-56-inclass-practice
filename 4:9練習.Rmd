@@ -218,7 +218,7 @@ get2 <- listExample["學期"]
 source("https://www.dropbox.com/s/qsrw069n94k61lj/transcript100to103_list.R?dl=1")
 ```
 
-若要比大小幣續確認雙方皆在同一個class
+若要比大小必須確認雙方皆在同一個class
 table  只要是可以分類去數的，就能夠根據該種類去製做成表格
 
 ```{r}
@@ -229,8 +229,34 @@ pick_above85 <- transcript100to103$成績 > 85
 # 各學屆2年級成績大於85年數
 table(transcript100to103$學屆[pick_above85])
 ```
+```{r}
+『筆記區』
+遇到不可排序的factor資料，可以先看他的levels若是你想要的排序的話
+可以直接寫 object <- ordered(object) ，便會依照levels上面的順序排
 
+若是不可排序的factor資料，就重寫一遍該內容
+例如
+example$allowance <-
+  factor(
+    c("0-1000", "1001-2000",
+    "2000+", "1001-2000") #原始資料,
+    levels=c("0-1000", "1001-2000", "2000+") #想要的順序,
+    ordered = T # 設定為可排序factor
+  )
+-------
+在使用sum的時候若數字裡有NA便會無法加總，此時只要在sum括號內後面加上 ,na.rm=T即可！
+-------
+判斷==(等於)、!=(不等於)、%in%(看左邊的集合是否屬於右邊的集合)
+-------
+unique 使重複的類別不再重複，有點類似levels效果
+```
 
+```{r}
+4.4.3否定用法
+pick_not_fromTaipeiMetro <- ! pick_fromTaipeiMetro
+# 或
+pick_not_fromTaipeiMetro <- !(example$residence %in% set_TaipeiMetro) # (..) 裡面會先運算完才做外面!的處理
+````
 
 ## R Markdown
 
